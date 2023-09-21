@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import RestaurantCard from './RestaurantCard'
-
+import Shimmer from './Shimmer'
 
 const Body = () => {
     const [allRestaurants,setAllRestaurants] = useState([])
@@ -24,7 +24,11 @@ const Body = () => {
         getRestaurant()
     },[])
 
-  return (
+    if(!allRestaurants) return null;    
+
+  return allRestaurants?.length === 0 ? (
+    <Shimmer/>
+  ):(
 
     <>
         <div className='search-box'>
@@ -38,25 +42,27 @@ const Body = () => {
             <div className='searchIcon'>
                 <input type="button" value="search" 
                     onClick={()=>{
-                        const filteredData=allRestaurants.filter((res)=>{
-                            return res.info.name.toLowerCase().includes(searchFilter.toLowerCase())
-                        })
-                        setFilteredRestaurants(filteredData)
-                    }
-                        
-                    }   
+
+                            const filteredData=allRestaurants.filter((res)=>
+                                res.info.name.toLowerCase().includes(searchFilter.toLowerCase()))
+                                setFilteredRestaurants(filteredData)
+                            }}     
                 />
             </div>
         </div>
-
         </div>
-        <div className='restaurant-cards'>
-            {filteredRestaurants?.map((restaurant)=>{
-                return (<RestaurantCard {...restaurant.info} key={restaurant.info.id} />)
-            })}
-        </div>
+        
+            <div className='restaurant-cards'>
+                {
+                filteredRestaurants.length === 0 
+                ? console.log('No restaurants found')
+                : filteredRestaurants?.map((restaurant) => {
+                return <RestaurantCard {...restaurant.info} key={restaurant.info.id} />;
+      })
+}
+        </div>    
     </>
-    
+  
   );
 }
 
