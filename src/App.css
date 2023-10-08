@@ -50,17 +50,20 @@ li{
 
   display: flex; 
   flex-wrap: wrap;
+  width: 100%;
+  gap:30px;
   justify-content: center;
   align-items: center;
-  gap:20px;
 
 }
 
 
 .card {
   height: 60vh;
-  width: 25%;
-
+  width: 85%;
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid black;
 }
 
 .card img{
@@ -83,4 +86,28 @@ li{
 .auth-buttons{
   padding-top: 40px;
   padding-right: 20px;
+}
+.shimmer-card{
+
+  width: 25%;
+  height:30vh;
+  background-color: lightgray;
+  margin: 70px 20px 20px 20px;
+  
+}
+
+a{
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  border: 1px solid red;
+  width: 28%;
+}
+
+.restaurant-menu-cover{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 10px 10px 10px 10px;
+  border: 2px solid black;
 }
