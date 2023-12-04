@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useOnline from '../utils/useOnline'
 
 const Header = () => {
 
   const [loginUser,setLoginUser]=useState(false)
-
+  const isOnline = useOnline()
   return (
     <div className='header'>
       <div className='logo'>
@@ -15,6 +16,7 @@ const Header = () => {
           <Link to="/"><li>Home</li></Link>
           <Link to="/about"><li>About</li></Link>
           {/* <Link><li>Order</li></Link> */}
+          {isOnline?'🟢 Online':'🔴 Offline'}
         </ul>
       </div>
       <div className='auth-buttons'>
