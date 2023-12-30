@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useOnline from '../utils/useOnline'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
 
   const [loginUser,setLoginUser]=useState(false)
   const isOnline = useOnline()
+  const cartItems=useSelector((store)=>store.cart.items)
+
   return (
     <div className='header'>
       <div className='logo'>
@@ -14,8 +17,7 @@ const Header = () => {
       <div className='nav-links'>
         <ul>
           <Link to="/"><li>Home</li></Link>
-          <Link to="/about"><li>About</li></Link>
-          {/* <Link><li>Order</li></Link> */}
+          <Link to="/cart"><li>Cart{cartItems.length + "items"}</li></Link>
           {isOnline?'🟢 Online':'🔴 Offline'}
         </ul>
       </div>
