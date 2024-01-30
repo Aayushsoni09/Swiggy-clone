@@ -13,7 +13,7 @@ const Cart = () => {
   }
   return (
     <>
-    <h1>Cart {cartItems.length + " items"}</h1>
+    <h1>Total Cart Items : {cartItems.length}</h1>
     <button onClick={()=>onHandleClick()}>Clear</button>
         {cartItems.map((item)=><CartMenu key={item.id} {...item} />)}
     </>

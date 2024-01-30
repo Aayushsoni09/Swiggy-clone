@@ -3,6 +3,7 @@ import RestaurantCard from './RestaurantCard'
 import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
 import {data} from '../utils/swiggyData'
+import Button from '@mui/material/Button';
 const Body = () => {
     const [allRestaurants,setAllRestaurants] = useState([])
     const [filteredRestaurants,setFilteredRestaurants] = useState([])
@@ -41,15 +42,17 @@ const Body = () => {
                 
             />
             <div className='searchIcon'>
-                <input type="button" value="search" 
-                    onClick={()=>{
-
+                <Button 
+                onClick={()=>{
                             const filteredData=allRestaurants.filter((res)=>
                                 res.info.name.toLowerCase().includes(searchFilter.toLowerCase()))
                                 setFilteredRestaurants(filteredData)
                                 
-                            }}     
-                />
+                            }}
+                sx={{color:'orangered', borderColor:"orangered", marginTop:"20px" , width:"100%", height:"30px"}}            
+                            >Search</Button> 
+                      
+                
             </div>
         </div>
         </div>

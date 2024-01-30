@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useOnline from '../utils/useOnline'
 import { useSelector } from 'react-redux'
-
+import Button from '@mui/material/Button';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 const Header = () => {
 
   const [loginUser,setLoginUser]=useState(false)
@@ -17,17 +18,22 @@ const Header = () => {
       <div className='nav-links'>
         <ul>
           <Link to="/"><li>Home</li></Link>
-          <Link to="/cart"><li>Cart{cartItems.length + "items"}</li></Link>
+          <Link to="/cart">
+            <li>
+            <div class="cart">
+              <span class="count">{cartItems.length}</span>
+              <i class="material-icons"><ShoppingCartOutlinedIcon/></i>
+            </div>
+            </li>
+          </Link>
           {isOnline?'🟢 Online':'🔴 Offline'}
         </ul>
       </div>
       <div className='auth-buttons'>
         {
-          loginUser === false ? <button onClick={()=>setLoginUser(true)}>Login</button> : <button onClick={()=>setLoginUser(false)}>Logout</button>
-        }
-        
-        
-
+          loginUser === false ? <Button sx ={{backgroundColor:"orangered",'&:hover': {
+            backgroundColor: 'orange'}}} variant="contained" onClick={()=>setLoginUser(true)}>Login</Button> : <Button sx={{color:'white', backgroundColor:"orangered", '&:hover': {backgroundColor: 'orange'}}} variant="contained"  onClick={()=>setLoginUser(false)}>Logout</Button>
+        }                  
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IMG_URL } from '../utils/constants'
-
+import Rating from '@mui/material/Rating';
 const Restaurant_Card = (props) => {
   return (
     <div className='card'>
@@ -11,7 +11,9 @@ const Restaurant_Card = (props) => {
         />
         </div>
         <div className='rest-name'><h2>{props.name}</h2></div>
-        <div className='rest-rating'><p>{props.avgRating}</p></div>
+        <div className='rest-rating'><p><Rating   
+        sx={{'& .MuiRating-iconFilled': { color: 'orangered' },}} 
+        name="read-only" value={props.avgRating} readOnly /></p></div>
         <div className='rest-cuisines'><p>{props.cuisines.join(' ,')}</p></div>
         <div className='rest-area'><p>{props.areaName}</p></div>
 
