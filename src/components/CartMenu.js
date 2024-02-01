@@ -1,13 +1,31 @@
 import React from 'react'
-
-const CartMenu = ({name,price}) => {
+import {IMG_URL} from '../utils/constants'
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+const CartMenu = ({name,price,description,imageId}) => {
   return (
     <>
-        <ul>
-            <li>
-                {name} {"Rs. " + price/100}
-            </li>
-        </ul>
+ <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="menuitem" src={IMG_URL + imageId} />
+          </ListItemAvatar>
+          <ListItemText
+            primary={name}
+            secondary={
+              <React.Fragment>
+                {description} 
+              </React.Fragment>
+            }
+          />
+          <h4>Rs. {price?(price/100):(249)}</h4>
+        </ListItem>
+        <Divider variant="inset" component="li" />
+      </List>
     </>
   )
 }

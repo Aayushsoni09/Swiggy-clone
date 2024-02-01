@@ -3,10 +3,12 @@ import Header from "./components/Header"
 import Body from "./components/Body"
 import Error from './components/Error';
 import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
 import { Provider } from 'react-redux'
 import {store} from "./utils/store"
+
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="*" element={<Error/>}/>
           <Route path="/restaurant/:id" element={<RestaurantMenu/>} />
           <Route path="/cart" element={<Cart/>} />
+          <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
     </div>
     </Router>

@@ -38,17 +38,14 @@ const Body = () => {
                 type="text" 
                 placeholder='Search restaurant or dishes...'
                 value={searchFilter}
-                onChange={(e)=>{setSearchFilter(e.target.value)}} 
-                
+                onChange={(e)=>{setSearchFilter(e.target.value)}}    
             />
             <div className='searchIcon'>
                 <Button 
                 onClick={()=>{
                             const filteredData=allRestaurants.filter((res)=>
                                 res.info.name.toLowerCase().includes(searchFilter.toLowerCase()))
-                                setFilteredRestaurants(filteredData)
-                                
-                            }}
+                                setFilteredRestaurants(filteredData)}}
                 sx={{color:'orangered', borderColor:"orangered", marginTop:"20px" , width:"100%", height:"30px"}}            
                             >Search</Button> 
                       
